@@ -10,27 +10,48 @@ import XCTest
 @testable import WeatherTestApp
 
 class WeatherTestAppTests: XCTestCase {
+    private let defaultTimeout: TimeInterval = 15
     
     override func setUp() {
         super.setUp()
-        // Put setup code here. This method is called before the invocation of each test method in the class.
+        
     }
     
-    override func tearDown() {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
-        super.tearDown()
-    }
-    
-    func testExample() {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-    }
-    
-    func testPerformanceExample() {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
+    func testGetCurrentWeatherByCityName() {
+     /*   let cityName = "Paris"
+        
+        let loadingExpectation = expectation(description: "Current weather was downloaded")
+        
+//        DataProvider.sharedProvider.triggerDataUpdate(entityType: .City) { [unowned self] in
+            guard let sself = self else { return }
+            
+            if error == nil {
+                if let currentWeather = currentWeather {
+                    sself.validate(currentWeather: currentWeather)
+                } else {
+                    XCTAssertNotNil(currentWeather, "currentWeather must not be nil, when there is no error in response")
+                }
+            } else {
+                XCTAssert(!error!.localizedDescription.isEmpty, "The error description must not be nil")
+            }
+            
+            loadingExpectation.fulfill()
         }
+        
+        waitForExpectations(timeout: defaultTimeout)
+ */
+    }
+    
+    private func validate(currentWeather: CityWeather) {
+        XCTAssertNotNil(currentWeather.cityId)
+        XCTAssertNotNil(currentWeather.cityName)
+        
+        XCTAssertNotNil(currentWeather.temperature)
+        XCTAssertNotNil(currentWeather.minTemperature)
+        XCTAssertNotNil(currentWeather.maxTemperature)
+        
+        XCTAssertNotEqual(currentWeather.humidity, 0)
+        XCTAssertNotEqual(currentWeather.pressure, 0)
     }
     
 }

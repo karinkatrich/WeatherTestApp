@@ -13,7 +13,9 @@ import CoreData
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-
+    static let registeredCities: Dictionary = ["London":"2643743","Paris":"2968815","Madrid":"6359304","Roma":"3169070","Luxembourg":"2960316","Bruxelles":"2800867","Berlin":"2950141","Prague":"3067696","Lisbon":"6458923","Helsinki":"658225","New York":"5115985","Chicago":"4887398","Los Angeles":"5368361","Tokyo":"1850147"]
+    static let syncEntities: [Entities] = [.City]
+    static let syncIntervalInMinutes: Int = 2
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
